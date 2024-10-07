@@ -16,4 +16,6 @@ header {
 header > h2{
     font-family: 'Source Sans 3', sans-serif;
     font-weight: 300;
+
+    margin-top: 1rem;
 }
