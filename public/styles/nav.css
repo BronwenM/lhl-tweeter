@@ -5,6 +5,7 @@ nav {
     height: 120px;
     padding: 0 1.5em;
 
+    position: fixed;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -24,5 +25,5 @@ nav {
 
 .nav-cta .fa-angles-down {
     color: red;
-    
+
 }
