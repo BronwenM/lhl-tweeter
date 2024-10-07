@@ -18,8 +18,34 @@ body {
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
+
+  font-family: "Source Sans 3";
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
 }
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
+ /* .bungee-regular {
+  font-family: "Bungee", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.source-sans-3-300 {
+  font-family: "Source Sans 3", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.source-sans-3-600 {
+  font-family: "Source Sans 3", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+} */
