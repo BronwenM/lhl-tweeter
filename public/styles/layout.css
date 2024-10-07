@@ -33,5 +33,6 @@ body {
   width: 90%;
   display: flex;
   justify-content: center;
-  background-color: #f4f1ec;
+  background-color: inherit;
+  margin: 0 auto;
  }
