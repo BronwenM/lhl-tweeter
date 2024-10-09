@@ -9,9 +9,9 @@
 
   border: var(--default-text-color) solid 4px;
 
-  /* &:hover { */
+  &:hover {
     box-shadow: 6px 6px 0 rgba(64, 86, 161, 0.25);
-  /* } */
+  }
 }
 
 .tweet-user-info {
