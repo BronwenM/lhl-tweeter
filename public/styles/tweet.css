@@ -1,0 +1,79 @@
+@import url("./root-styles.css");
+
+.tweet-container {
+  background-color: var(--default-bg-color);
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0;
+  padding: 1rem;
+
+  border: var(--default-text-color) solid 4px;
+
+  /* &:hover { */
+    box-shadow: 6px 6px 0 rgba(64, 86, 161, 0.25);
+  /* } */
+}
+
+.tweet-user-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  margin: 0 0 2rem 0;
+
+  img {
+    width: 80px;
+    height: 80px;
+    margin-right: 0.5rem;
+    border: var(--denim-blue) solid 6px;
+    border-radius: 100%;
+    background-color: var(--default-highlight-color);
+  }
+
+  .tweet-username-container {
+    display: flex;
+    flex-direction: column;
+    color: #000;
+
+    .tweet-display-handle {
+      font-size: medium;
+      color: var(--secondary-text-color);
+    }
+  }
+}
+
+.tweet-content {
+  display: flex;
+  flex-direction: column;
+
+  .tweet-text {
+    margin-bottom: 2rem;
+  }
+
+  .tweet-information {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 0.5rem;
+
+    border-top: var(--default-text-color) solid 4px;
+    padding-top: 0.5rem;
+    font-size: 0.70em;
+
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+    cursor: default;
+
+    button {
+      background: none;
+      border: none;
+      color: var(--denim-blue);
+
+      &:hover {
+        color: var(--default-highlight-color);
+        cursor: pointer;
+      }
+    }
+  }
+}

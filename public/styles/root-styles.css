@@ -1,0 +1,10 @@
+:root {
+    /* Default colours */
+    --default-text-color: #545149;
+    --secondary-text-color: #202020;
+    --default-bg-color: #f4f1ec;
+    --default-highlight-color: #F1A727;
+
+    /* Named colors */
+    --denim-blue: #4056A1; 
+}
