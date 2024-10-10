@@ -54,7 +54,7 @@ $(document).ready(function () {
 
   $('#create-tweet').on('submit', function(event) {
     event.preventDefault();
-    const tweetContent = $(this).find('textarea').val();
+    const tweetContent = $(this).find('textarea').val().trim();
     const serializedData = $(this).serialize();
     console.log(serializedData)
 
@@ -63,8 +63,8 @@ $(document).ready(function () {
     } else if( tweetContent.length > 140) {
       alert('Your tweet is too long!');
     } else {
-      $.post('/tweets', serializedData, (data) => {
-        renderAllTweets(data);
+      $.post('/tweets', serializedData, () => {
+        loadTweets();
       });
     }
   })
