@@ -44,3 +44,42 @@
 .over-limit {
     color: red;
 }
+
+.tweet-warning {
+    background-color: #ffe2e0;
+    border: 2px solid #ff5c50;
+    color: #ff4538;
+
+    width: 100%;
+    margin-bottom: 1rem;
+    /* padding: 1rem; */
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+
+    font-weight: 500;
+    opacity: 0;
+
+    transition: all ease-in-out 200ms;
+
+    span {
+        padding: 1rem;
+    }
+
+    button {
+        color: #ff4538;
+        background: none;
+        border: none;
+        font-size: larger;
+        padding: 1rem 2rem;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.hide {
+    opacity: 0;
+    display: none;
+}

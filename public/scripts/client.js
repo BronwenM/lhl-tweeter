@@ -58,6 +58,11 @@ $(document).ready(function () {
 
   loadTweets();
 
+  $('.tweet-warning button').on('click', function(){
+    $('.tweet-warning').css({opacity: 0});
+
+    setTimeout(function(){ $('.tweet-warning').css({display: "none"}) }, 300);
+  })
 
   $('#create-tweet').on('submit', function(event) {
     event.preventDefault();
@@ -68,12 +73,16 @@ $(document).ready(function () {
     console.log('serializedData:', serializedData)
 
     if(!tweetContent) {
-      alert("There's nothing here!");
+      $('.tweet-warning span').text('There\'s nothing there!');
+      $('.tweet-warning').css({display: "flex", opacity: 1});
     } else if( tweetContent.length > 140) {
-      alert('Your tweet is too long!');
+      $('.tweet-warning span').text('There\'s nothing there!');
+      $('.tweet-warning').css({display: "flex", opacity: 1});
     } else {
       $.post('/tweets', serializedData, () => {
         $(this).find('textarea').val('');
+        $('.tweet-warning').css({opacity: 0});
+        setTimeout(function(){ $('.tweet-warning').css({display: "none"}) }, 300);
         loadTweets();
       });
     }
