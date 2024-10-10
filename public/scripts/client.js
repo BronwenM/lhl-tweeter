@@ -1,10 +1,16 @@
 /*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
+* Client-side JS logic goes here
+* jQuery is already loaded
+* Reminder: Use (and do all your DOM work in) jQuery's document ready function
+*/
 
 $(document).ready(function () {
+  const noHTML = (str) => {
+    const regex = /\<\/?[a-z]*\>/gm;
+  
+    return str.replaceAll(regex, '')
+  }
+
   const createTweet = (tweetData) => {
     const timeagoFormatted = timeago.format(tweetData.created_at);
 
@@ -18,7 +24,7 @@ $(document).ready(function () {
           </div>
         </div>
         <div class="tweet-content">
-          <span class="tweet-text">${tweetData.content.text}</span>
+          <span class="tweet-text">${noHTML(tweetData.content.text)}</span>
           <div class="tweet-information">
             <span class="tweet-date-posted">${timeagoFormatted}</span>
             <div class="tweet-actions">
@@ -42,7 +48,7 @@ $(document).ready(function () {
   }
 
   const loadTweets = () => {
-    $.get('/tweets', function(data) {
+    $.get('/tweets', function(data) {  
       renderAllTweets(data);
     })
     .fail(function() {
@@ -52,11 +58,14 @@ $(document).ready(function () {
 
   loadTweets();
 
+
   $('#create-tweet').on('submit', function(event) {
     event.preventDefault();
-    const tweetContent = $(this).find('textarea').val().trim();
+    const tweetContent = noHTML($(this).find('textarea').val().trim());
     const serializedData = $(this).serialize();
-    console.log(serializedData)
+    console.log('this:', $(this));
+    console.log('tweetContent:', tweetContent)
+    console.log('serializedData:', serializedData)
 
     if(!tweetContent) {
       alert("There's nothing here!");
@@ -64,18 +73,9 @@ $(document).ready(function () {
       alert('Your tweet is too long!');
     } else {
       $.post('/tweets', serializedData, () => {
+        $(this).find('textarea').val('');
         loadTweets();
       });
     }
   })
 })
-
-/* 
-    
-    if(!$('form #tweet-text').text() === "") {
-      $.post('/tweets', serializedData, (data) => {
-        renderAllTweets(data);
-      });
-      
-    }
-*/
