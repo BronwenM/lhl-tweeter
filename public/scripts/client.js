@@ -5,37 +5,13 @@
  */
 
 $(document).ready(function () {
-
-  const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png"
-        ,
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd" },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
-    }
-  ]
-
   const createTweet = (tweetData) => {
+    const timeagoFormatted = timeago.format(tweetData.created_at);
+
     const $newTweet = $(`
       <article class="tweet-container">
         <div class="tweet-user-info">
-          <img src="./images/profile-hex.png" alt="placeholder profile image"/>
+          <img src="${tweetData.user.avatars ? tweetData.user.avatars : './images/profile-hex.png'}" alt="placeholder profile image"/>
           <div class="tweet-username-container">
             <span class="tweet-display-username">${tweetData.user.name}</span>
             <span class="tweet-display-handle">${tweetData.user.handle}</span>
@@ -44,7 +20,7 @@ $(document).ready(function () {
         <div class="tweet-content">
           <span class="tweet-text">${tweetData.content.text}</span>
           <div class="tweet-information">
-            <span class="tweet-date-posted">${tweetData.created_at}</span>
+            <span class="tweet-date-posted">${timeagoFormatted}</span>
             <div class="tweet-actions">
                 <button type="button"><i class="fa-solid fa-retweet"></i></button>
                 <button type="button"><i class="fa-solid fa-flag"></i></button>
@@ -61,11 +37,17 @@ $(document).ready(function () {
   const renderAllTweets = (allTweets) => {
     for(const tweet of allTweets) {
       const $singleTweet = createTweet(tweet);
-      $('#tweets').append($singleTweet);
+      $('#tweets').prepend($singleTweet);
     }
   }
 
-  renderAllTweets(data);
+  const loadTweets = () => {
+    $.get('/tweets', function(data) {
+      renderAllTweets(data);
+    })
+  }
+
+  loadTweets();
 
   $('.create-tweet').on('submit', function (event) {
     event.preventDefault();
@@ -73,11 +55,8 @@ $(document).ready(function () {
 
     // console.log(serializedData)
 
-    const postTweet = $.post('/tweets', serializedData);
-
-    postTweet.done(function (data) {
-      const tweetFeed = $('.tweets');
-
-    })
+    $.post('/tweets', serializedData, function(data) {
+      renderAllTweets(data);
+    });
   })
 })
