@@ -45,18 +45,37 @@ $(document).ready(function () {
     $.get('/tweets', function(data) {
       renderAllTweets(data);
     })
+    .fail(function() {
+      console.error('An error occurred while fetching tweets.');
+    });
   }
 
   loadTweets();
 
-  $('.create-tweet').on('submit', function (event) {
+  $('#create-tweet').on('submit', function(event) {
     event.preventDefault();
-    const serializedData = this.serialize();
+    const tweetContent = $(this).find('textarea').val();
+    const serializedData = $(this).serialize();
+    console.log(serializedData)
 
-    // console.log(serializedData)
-
-    $.post('/tweets', serializedData, function(data) {
-      renderAllTweets(data);
-    });
+    if(!tweetContent) {
+      alert("There's nothing here!");
+    } else if( tweetContent.length > 140) {
+      alert('Your tweet is too long!');
+    } else {
+      $.post('/tweets', serializedData, (data) => {
+        renderAllTweets(data);
+      });
+    }
   })
 })
+
+/* 
+    
+    if(!$('form #tweet-text').text() === "") {
+      $.post('/tweets', serializedData, (data) => {
+        renderAllTweets(data);
+      });
+      
+    }
+*/
