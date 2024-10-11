@@ -6,7 +6,9 @@
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -29,17 +31,17 @@ body {
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
 
- main {
+main {
   width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   background-color: inherit;
   margin: 0 auto;
- }
+}
 
- /* Tablets */
- @media only screen and (max-width: 1024px) {
+/* Tablets */
+@media only screen and (max-width: 1024px) {
   body {
     display: grid;
     grid-template-rows: minmax(10px, 1fr);
@@ -50,8 +52,8 @@ body {
   }
 }
 
- /* Desktop */
- @media only screen and (min-width: 1024px) {
+/* Desktop */
+@media only screen and (min-width: 1024px) {
   body {
     display: grid;
     grid-template-columns: 0.5fr 1fr;
@@ -71,10 +73,28 @@ body {
     position: relative;
     top: 140px;
   }
-  
 }
 
 #tweets {
   position: relative;
   transition: all ease-out 0.5s;
+}
+
+#tweets article:after {
+  content: "";
+  background: rgb(64, 86, 161);
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+
+  height: 50%;
+  width: 25px;
+
+  z-index: -1;
+}
+
+#tweets article:last-child::after {
+  height: 300px;
+  border-radius: 16px;
 }
