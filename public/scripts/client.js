@@ -114,7 +114,7 @@ $(document).ready(function () {
 
   openCloseNewTweet(newTweetIsHidden);
 
-  $('.nav-cta').on('click', function () {
+  $('.nav-cta').on('click', function() {
     openCloseNewTweet(newTweetIsHidden);        
 
     //this works but I find openCloseNewTweet looks better ¯\_(ツ)_/¯
