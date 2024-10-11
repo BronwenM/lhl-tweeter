@@ -52,3 +52,9 @@ nav {
     z-index: 9999;
     cursor: pointer;
 }
+
+@media only screen and (max-width: 500px) {
+    .nav-cta span {
+        font-size: medium;
+    }
+}
