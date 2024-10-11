@@ -76,7 +76,7 @@ $(document).ready(function () {
       $('.tweet-warning span').text('There\'s nothing there!');
       $('.tweet-warning').css({display: "flex", opacity: 1});
     } else if( tweetContent.length > 140) {
-      $('.tweet-warning span').text('There\'s nothing there!');
+      $('.tweet-warning span').text('Your Tweet is too long!');
       $('.tweet-warning').css({display: "flex", opacity: 1});
     } else {
       $.post('/tweets', serializedData, () => {
@@ -88,5 +88,31 @@ $(document).ready(function () {
     }
   })
 
-  // $('nav-cta')
+  let newTweetIsHidden = true;
+
+  const openCloseNewTweet = (isHidden) => {
+
+      if(!isHidden) {
+        $('.new-tweet').css({opacity: 1, transform: 'translateY(0)'});
+        $('#tweets').css({transform: 'translateY(0)'})
+
+        $('.nav-cta i').css({transform: 'rotate(0)'});
+        $('.nav-cta span').html('<b>Browse</b> the timeline');
+        newTweetIsHidden = true;
+  
+      } else {
+        $('.new-tweet').css({opacity: 0, transform: 'translateY(-220px)'});
+        $('#tweets').css({transform: 'translateY(-220px)'})
+        $('.nav-cta i').css({transform: 'rotate(-180deg)'});
+        $('.nav-cta span').html('<b>Write</b> a new tweet');
+        newTweetIsHidden = false;
+      }
+    
+  }
+  
+  openCloseNewTweet(newTweetIsHidden);
+
+  $('.nav-cta').on('click', function(){
+        openCloseNewTweet(newTweetIsHidden);
+  })
 })

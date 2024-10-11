@@ -39,7 +39,7 @@ body {
  }
 
  /* Tablets */
- @media only screen and (min-width: 768px) and (max-width: 1024px) {
+ @media only screen and (max-width: 1024px) {
   body {
     display: grid;
     grid-template-rows: minmax(10px, 1fr);
@@ -68,5 +68,13 @@ body {
 
   main {
     padding-left: 2rem;
+    position: relative;
+    top: 140px;
   }
+  
+}
+
+#tweets {
+  position: relative;
+  transition: all ease-out 0.5s;
 }

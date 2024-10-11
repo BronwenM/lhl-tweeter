@@ -1,5 +1,10 @@
 .new-tweet {
     width: 100%;
+    position: relative;
+    z-index: 1;
+    background-color: var(--default-bg-color);
+    transition: all ease-out 0.5s;
+
 }
 
 .new-tweet form {
@@ -23,7 +28,7 @@
     outline: none;
 }
 
-.new-tweet div {
+.tweet-output {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -32,13 +37,17 @@
     margin-top: 1rem;
 }
 
-.new-tweet button {
+.tweet-output button {
     background-color: #4056A1;
     color: #fff;
     border: none;
     padding: 0.5rem 1rem;
     border-radius: 4px;
     cursor: pointer;
+
+    &:hover {
+        background-color: #5171d9;
+    }
 }
 
 .over-limit {
@@ -72,6 +81,7 @@
         border: none;
         font-size: larger;
         padding: 1rem 2rem;
+        cursor: pointer;
 
         &:focus {
             outline: none;

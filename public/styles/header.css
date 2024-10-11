@@ -1,6 +1,7 @@
 header {
     background-color: #e2a030;
     color: white;
+    z-index: 2;
 
     width: 100%;
 
